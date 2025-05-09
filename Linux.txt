@@ -1,5 +1,0 @@
-Linux
-1. BIG PICTURE
-1.1 Levels and Layers of Abstraction in a Linux System
-hardware -> kernel -> User Processes
-
