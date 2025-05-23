@@ -29,7 +29,7 @@
 
 ## What does Go look like?
     All go files must start with package declarations.
-    '''
+    '''go
     import (
       "pckgname"
       ...
@@ -39,7 +39,7 @@
     The text or strings in Go support multi-type UTG-8 encoding, making them safe for any language.
     Go functions may recieve and return 0 to many variables.
     main() functions is an entry point of your Go code.
-    '''
+    '''go
     // Seed random number generator using the current time
     rand.Seed(time.Now().UnixNano())
     // Generate a random number in the range of our list
