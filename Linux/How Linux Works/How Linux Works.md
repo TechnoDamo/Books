@@ -1,6 +1,4 @@
-# How Linux Works
-
-## Table of Contents
+# Table of Contents
 
 1. [BIG PICTURE](#1-big-picture)  
    1.1 [Levels and Layers of Abstraction in a Linux System](#11-levels-and-layers-of-abstraction-in-a-linux-system)  
@@ -31,12 +29,14 @@
    2.15 [Listing and Manipulating Processes](#listing-and-manipulating-processes)  
    2.16 [File Modes and Permissions](#file-modes-and-permissions)  
    2.17 [Archiving and Compressing Files](#archiving-and-compressing-files)  
+   2.19 [Linux Directory Hierarchy Essentials](#219-linux-directory-hierarchy-essentials)
+   2.20 [Running Commands as the Superuser](#220-running-commands-as-the-superuser)
 
 ---
 
-## 1. BIG PICTURE
+# 1. BIG PICTURE
 
-### 1.1 Levels and Layers of Abstraction in a Linux System  
+## 1.1 Levels and Layers of Abstraction in a Linux System  
 hardware → kernel → User Processes  
 
 **User processes:**  
@@ -63,11 +63,11 @@ User Processes — the running programs that the kernel manages — collectively
 
 ---
 
-### 1.2 Hardware: Understanding Main Memory
+## 1.2 Hardware: Understanding Main Memory
 
 ---
 
-### 1.3 The Kernel
+## 1.3 The Kernel
 
 The kernel is in charge of managing tasks for four general system areas:  
 - **Processes:** kernel determines which processes can use CPU.  
@@ -77,7 +77,7 @@ The kernel is in charge of managing tasks for four general system areas:
 
 ---
 
-#### 1.3.1 Process Management
+### 1.3.1 Process Management
 
 Process management describes starting, pausing, resuming, scheduling, and terminating processes.  
 
@@ -88,19 +88,19 @@ Process management describes starting, pausing, resuming, scheduling, and termin
 
 ---
 
-#### 1.3.2 Memory Management
+### 1.3.2 Memory Management
 
 - **Memory management unit (MMU):** enables 'virtual memory'.
 
 ---
 
-#### 1.3.3 Device Drivers and Management
+### 1.3.3 Device Drivers and Management
 
 Device drivers are usually accessible only to the kernel.
 
 ---
 
-#### 1.3.4 System Calls and Support
+### 1.3.4 System Calls and Support
 
 System calls or syscalls perform tasks that user processes cannot do well or at all.  
 
@@ -111,13 +111,13 @@ The kernel also supports user processes with features other than system calls, s
 
 ---
 
-### 1.4 User Space
+## 1.4 User Space
 
 User space is the main memory allocated by the kernel for user processes. Despite user processes appearing the same from the kernel's point of view, we can divide them into different levels.
 
 ---
 
-### 1.5 Users
+## 1.5 Users
 
 The Linux kernel supports the traditional concept of a Unix user.  
 
@@ -126,7 +126,7 @@ The Linux kernel supports the traditional concept of a Unix user.
 
 ---
 
-## 2. BASIC COMMANDS AND DIRECTORY HIERARCHY
+# 2. BASIC COMMANDS AND DIRECTORY HIERARCHY
 
 The **Bourne Shell**: `/bin/sh` — standard shell developed at Bell Labs for early Unix versions.  
 Every Unix system needs a version of `/bin/sh` to work.  
@@ -134,13 +134,13 @@ The **Bourne-again shell (bash)** is an enhanced version of the Bourne shell. On
 
 ---
 
-### Using the Shell
+## Using the Shell
 
-#### 2.1 The Shell Window - Terminal
+## 2.1 The Shell Window - Terminal
 
-#### 2.2 cat
+## 2.2 cat
 
-#### 2.3 Standard Input and Standard Output
+## 2.3 Standard Input and Standard Output
 
 - **CTRL-D vs CTRL-C difference**
 
@@ -151,78 +151,78 @@ The **Bourne-again shell (bash)** is an enhanced version of the Bourne shell. On
 
 ---
 
-### 2.4 Basic Commands
+## 2.4 Basic Commands
 
-#### 2.4.1 ls
+### 2.4.1 ls
 
-#### 2.4.2 cp
+### 2.4.2 cp
 
-#### 2.4.3 mv
+### 2.4.3 mv
 
-#### 2.4.4 touch
+### 2.4.4 touch
 
-#### 2.4.5 rm
+### 2.4.5 rm
 
-#### 2.4.6 echo
+### 2.4.6 echo
 
 ---
 
-### 2.5 Navigating Directories
+## 2.5 Navigating Directories
 
 - `/` — root directory, absolute path  
 - `..` — parent of a directory  
 - `.` — current directory
 
-#### 2.5.1 cd
+### 2.5.1 cd
 
-#### 2.5.2 mkdir
+### 2.5.2 mkdir
 
-#### 2.5.3 rmdir
+### 2.5.3 rmdir
 
-#### 2.5.4 Shell Globbing ("Wildcards")
+### 2.5.4 Shell Globbing ("Wildcards")
 
 - Check connection to regexp
 
 ---
 
-### 2.6 Intermediate Commands
+## 2.6 Intermediate Commands
 
-#### 2.6.1 grep  
+### 2.6.1 grep  
 Prints lines from a file or input stream that match an expression.
 
-#### 2.6.2 less  
+### 2.6.2 less  
 Terminal pager program used to view file contents one page at a time.
 
-#### 2.6.3 pwd  
+### 2.6.3 pwd  
 *Symbolic links may obscure true full path, so use* `pwd -P` *to eliminate this confusion.*
 
-#### 2.6.4 diff  
+### 2.6.4 diff  
 Shows differences between two text files.
 
-#### 2.6.5 file  
+### 2.6.5 file  
 Checks file format.
 
-#### 2.6.6 find and locate
+### 2.6.6 find and locate
 
-#### 2.6.7 head and tail
+### 2.6.7 head and tail
 
-#### 2.6.8 sort
+### 2.6.8 sort
 
 ---
 
-### 2.7 Changing Your Password and Shell
+## 2.7 Changing Your Password and Shell
 
 Use `passwd` command to change your password.
 
 ---
 
-### 2.8 Dot files
+## 2.8 Dot files
 
 Files starting with `.` are hidden (e.g., `.dir`, `.filename`).
 
 ---
 
-### 2.9 Environment and Shell Variables
+## 2.9 Environment and Shell Variables
 
 - Shell variables: temporary string values accessible from the programs the shell runs but not from commands run.
 - Shell variables are local to the current terminal session and not visible to child processes unless exported.
@@ -230,7 +230,7 @@ Files starting with `.` are hidden (e.g., `.dir`, `.filename`).
 
 ---
 
-### 2.10 The Command Path
+## 2.10 The Command Path
 
 - `PATH` is a special environment variable containing a list of system directories that the shell searches when locating a command.
 - Append a directory: `export PATH=$PATH:/home/user/mybin`
@@ -238,19 +238,19 @@ Files starting with `.` are hidden (e.g., `.dir`, `.filename`).
 
 ---
 
-### 2.11 Special Characters
+## 2.11 Special Characters
 
 ---
 
-### 2.12 Command-Line Editing
+## 2.12 Command-Line Editing
 
 ---
 
-### 2.13 Text Editors
+## 2.13 Text Editors
 
 ---
 
-### 2.14 Getting Help
+## 2.14 Getting Help
 
 - `man` — manual pages  
 - `man -k keyword` — search manuals  
@@ -260,34 +260,34 @@ Files starting with `.` are hidden (e.g., `.dir`, `.filename`).
 
 ---
 
-### 2.15 Shell Input and Output
+## 2.15 Shell Input and Output
 
 - Redirect output to file: `command > file`  
 - Append output to file: `command >> file`  
 - Pipe output of one command to another: `command1 | command2`
 
-#### 2.15.1 Standard Error
+### 2.15.1 Standard Error
 
 - Additional output stream for diagnostics/debugging.
 - Redirect stderr: `ls /fffff > f 2> e`  
 - `2` is the stream ID for standard error  
 - Redirect stderr to stdout: `ls /fffff > f 2>&1`
 
-#### 2.15.2 Standard Input Redirection
+### 2.15.2 Standard Input Redirection
 
 - Channel a file to a program’s standard input: `head < /proc/cpuinfo`
 
 ---
 
-### 2.16 Understanding Error Messages
+## 2.16 Understanding Error Messages
 
-#### 2.16.1 Anatomy of a Unix Error Message
+### 2.16.1 Anatomy of a Unix Error Message
 
-#### 2.16.2 Common Errors
+### 2.16.2 Common Errors
 
 ---
 
-### 2.17 Listing and Manipulating Processes
+## 2.17 Listing and Manipulating Processes
 
 - `ps` — lists running processes  
 - **PID:** process ID  
@@ -296,26 +296,26 @@ Files starting with `.` are hidden (e.g., `.dir`, `.filename`).
 - **TIME:** CPU time used by process  
 - **COMMAND:** command used to run the program (can change)
 
-#### 2.17.1 ps Command Options
+### 2.17.1 ps Command Options
 
 - `ps x` — show all your running processes  
 - `ps ax` — show all processes on the system, not just those you own  
 - `ps u` — detailed info on processes  
 - `ps w` — show full command names
 
-#### 2.17.2 Process Termination
+### 2.17.2 Process Termination
 
 - `kill pid` — sends TERM signal  
 - `kill -STOP pid`  
 - `kill -CONT pid`
 
-#### 2.17.3 Job Control
+### 2.17.3 Job Control
 
 Shell supports job control, allowing signals `TSTP` and `CONT` to be sent via commands and keystrokes.  
 Commands: `fg`, `bg`  
 Tools: `screen`, `tmux`
 
-#### 2.17.4 Background Processes
+### 2.17.4 Background Processes
 
 - Run process in background with `&`:  
   `nohup command &`  
@@ -323,18 +323,18 @@ Tools: `screen`, `tmux`
 
 ---
 
-### 2.18 File Modes and Permissions
+## 2.18 File Modes and Permissions
 
 - Every Unix file has permissions for reading, writing, and running.  
 - `ls -l` shows permissions. Example:  
   `-rw-r--r-- juser somegroup 7041 Mar 26 19:34 endnotes.html`  
 - `setuid` explained later.
 
-#### 2.18.1 Modifying Permissions
+### 2.18.1 Modifying Permissions
 
 - `umask 077` — default permission mask for new files.
 
-#### 2.18.2 Working with Symbolic Links
+### 2.18.2 Working with Symbolic Links
 
 - Create symlink: `ln -s target linkname`  
 - View symlinks: `ls -l`  
@@ -345,32 +345,86 @@ Tools: `screen`, `tmux`
 
 ---
 
-### 2.19 Archiving and Compressing Files
+## 2.19 Archiving and Compressing Files
 
-#### 2.19.1 gzip
+### 2.19.1 gzip
 
 - Compress: `gzip file`  
 - Uncompress: `gunzip file.gz`
 
-#### 2.19.2 tar
+### 2.19.2 tar
 
 - Create archive: `tar cvf archive.tar file1 file2 ...`  
 - Extract archive: `tar xvf archive.tar`  
 - Options: `p` and `t` modes
 
-#### 2.19.3 Compressed Archives
+### 2.19.3 Compressed Archives
 
-#### 2.19.4 zcat
+### 2.19.4 zcat
 
 - Equivalent to `gunzip -dc` which decompresses and sends output to stdout.  
 - Example: `zcat file.tar.gz | tar xvf -`  
 - `z` option automatically invokes gzip on archive.
 
-#### 2.19.5 Other Compression Utilities
+### 2.19.5 Other Compression Utilities
 
 ---
 
-## Linux Directory Hierarchy Essentials
+## 2.19 Linux Directory Hierarchy Essentials
+Full details are outlined here: [FHS](https://refspecs.linuxfoundation.org/fhs.shtml "Filesystem Hierarchy Standard")
 
-*(Not included in the excerpt)*
+We will have a brief walkthrough
 
+![linux-filesystem](./img/linux-filesystem.png "Linux dir hierarchy")
+
+- **/bin** Contains executables
+Includes even most basic commands as ls and cp.
+Most of the programs are in binary format, created by a C compiler, but some are shell scripts in modern systems.
+- **/dev** Contains device files 
+- **/etc** Core system configuration directory
+Contains the user password, boot, device, networking and other setup
+- **/home** Personal directories for regular users
+- **/lib** Holds library files that executables can use
+Should contain only shared libraries, but other lib dirs as /usr/lib may also contain static ones.
+- **/proc** Provides system statistics throught a browsable directory-and-file interface
+- **/run** COntains runtime data specific to the system, like process IDs, socket files, status recors and so on.
+In older version it is /var/run, in newer ones /var/run is a symbolic link to /run.
+- **/sys** Provides a device and system interface
+- **/sbin** The place for system executables
+- **/tmp** A storage area for smaller, temporary files that are not much important.
+Many programs use this dir as a workspace.
+- **/usr** Partially dublicates root filestructure for practical reasons
+- **/var** The variable subdirectory, where programs record information that can change over time.
+
+### 2.19.1 Other Root Subdirectories
+- **/boot** Contains kernel boot loader files
+- **/media** A base attachment point for removable media such as flash drives that is found in many distributions.
+- **/opt** This may contain additional third-party software, but many systems don't use it.
+
+### 2.19.2 The /usr Directory
+This is where most of the user-space programs and data reside.
+It also contians the following:
+- **/include** Holds header files used by the C compiler
+- **/local** Is where administrators can install their own software. Its structure should look like that of / and /usr.
+- **/man** Contains manual pages
+- **/share** Contains files that should work on other kinds of Unix machines with no loss of functionality
+
+### 2.19.3 Kernel Location
+The kernel is normally a binary file /vmlinuz or /boot/vmlinuz. A *boot loader* loads this file into memory and sets it in motion when the system boots.
+Once the kernel is being started by the *boot loader*, the main kernel file is no longer used by the running system.
+But kernel still loads and unloads many modules on demand while the system operates. They are called *loadable kernel modules*, and are located in */lib/modules*.
+
+## 2.20 Running Commands as the Superuser
+Staring a root shell has many disadvantages.
+
+### 2.20.1 sudo
+Most distributions use a package called sudo to allow administrators to run commands as root when they are logged in as themselves.
+
+### 2.20.2 /etc/sudoers
+This is the file that holds configurations for privileged users. 
+We can edit it with visudo command, that also checks for file syntax errors.
+
+### 2.20.3 sudo Logs
+Find sudo logs on most systems:
+```journalctl SYSLOG_IDENTIFIER=sudo```
+On older systems in a log file in */var/log*
