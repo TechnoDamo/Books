@@ -37,7 +37,90 @@
 30. [Sweep line algorithms](#30-sweep-line-algorithms)
 
 # Basic Technniques
-## 1. Inroduction 
+## 1. Inroduction
+### Input and output
+```cpp
+#include <bits/stdc++.h> // includes all standard library
+using namespace std;
+int main() {
+    // solution
+}
+```
+We can compile code with `g++ -std=c++11 -02 -Wall test.cpp -o test`. This command produces a binary file test from the source code test.cpp. 
+The following lines at the beginning of the code make input and output more efficient:
+```cpp
+ios::sync_with_stdio(0)
+cin.tie(0)
+```
+* `\n` works faster than `endl`.
+* functions *scanf* and *printf* are usually a bit faster than C++ standard streams. 
+```cpp
+int a, b;
+scanf("%d %d", &a, &b);
+printf("%d %d\n", a, b);
+```
+* To read the whole line from the input (which possibly contains spaces), we can use *getline* function.
+```cpp
+string s;
+getline(cin, s);
+```
+* If the amount of data is unknown, we can use such a loop.
+```cpp
+while (cin >> x) {
+    // code
+}
+```
+* To read/write from/to files as we are using standard input/output we can use *freopen*.
+```cpp
+freopen("input.txt", "r", stdin);
+freopen("output.txt", "w", stdout);
+```
+### Working with nubmers
+#### Integers
+#### Modular arithmetics
+Important property of the remainder.
+$$
+(a + b) \mod m = (a \mod m + b \mod m) \mod m \\
+(a − b) \mod m = (a \mod m − b \mod m) \mod m \\
+(a \cdot b) \mod m = (a \mod m \cdot b \mod m) \mod m
+$$
+For example, the following calculates *n!, modulo m*:
+```cpp
+long long x = 1;
+for (int i = 2; i <= n; i++) {
+    x = (x*i)%m;
+}
+cout << x%m << "\n";
+```
+#### Floating point numbers
+Good way to compare floating point numbers is to evaluate their difference.
+```cpp
+if (abs(a-b) < 1e-9) {
+    // a and b are equal
+}
+```
+### Shortening code
+#### Type names
+Using the command *typedef* it is possible to give a shorter name to a datatype. 
+```cpp
+typedef long long ll;
+long long a = 123456789;
+ll b = 123456789;
+```
+It can also be used with more complex datatypes.
+```cpp
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+```
+#### Macros
+A macro means that certain string in the code will be changed before compilation.
+### Mathematics
+#### Sum formulas
+#### Set theory
+#### Logic
+#### Functions
+#### Logarithms
+
 ## 2. Time complexity
 ## 3. Sorting
 ## 4. Data structures
