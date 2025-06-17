@@ -23,39 +23,103 @@
 21. [Go in the Cloud](#21-go-in-the-cloud)
 
 # 1. Variables and Operators
-    Go is compliant with memory safety and channel-based concurrency.
-    Go is compiled into a self-contained executable, which can run everywhere.
-    Go has a statically typed and type-safe memory with a garbage collector that automates memory managment.
+  - Go is compliant with memory safety and channel-based concurrency.
+  - Go is compiled into a self-contained executable, which can run everywhere.
+  - Go has a statically typed and type-safe memory with a garbage collector that automates memory managment.
 
 ## What does Go look like?
-    All go files must start with package declarations.
+  All go files must start with package declarations.
     
-    ```go
-    import (
-      "pckgname"
-      ...
-    )
-    ```
+  ```go
+  import (
+    "pckgname"
+    ...
+  )
+  ```
 
-    All files in the same dir are considered part of the same package.
-    The text or strings in Go support multi-type UTG-8 encoding, making them safe for any language.
-    Go functions may recieve and return 0 to many variables.
-    main() functions is an entry point of your Go code.
+  - All files in the same dir are considered part of the same package.
+  - The text or strings in Go support multi-type UTG-8 encoding,making them safe for any language.
+  - Go functions may recieve and return from 0 to many variables.
+  - main() functions is an entry point of your Go code.
     
-    ```go
-    // Seed random number generator using the current time
-    rand.Seed(time.Now().UnixNano())
-    // Generate a random number in the range of our list
-    index := rand.Intn(len(helloList))
-    ```
+  ```go
+  // Seed random number generator using the current time
+  rand.Seed(time.Now().UnixNano())
+  // Generate a random number in the range of our list
+  index := rand.Intn(len(helloList))
+  ```
 
 ## Declaring variables
-
+### Declaring a variable using var
+```go
+var foo string = "bar
+```
+### Declaring multiple variables at once with var
+```go
+var (
+  name1 string = "5"
+  name2 int = 5
+  name3 bool = true
+)
+```
+### Skipping the type or value when declaring variables
+In real-world code it's not common to use the full var notation.
+### Type inference gone wrong
+There are times when we need to use full var declaration because Go isn't able to correctly guess the right type.
+### Short variable declaration
+```go
+variable := 123
+```
+### Declaring multiple variables with a short variable declaration
+```go
+Debug, LogLevel, startUpTime := false, "info", time.Now()
+```
+### Using var to declare multiple variables in one line 
+```go
+func getConfig() (bool, string, time.Time) {
+  return false, "info", time.Now()
+}
+// Type only
+var start, middle, end float32
+// Mixed type (initial value provided)
+var name, left, right, top, bottom = "one", 1, 1.4, 2, 2.5
+// Also works with functions
+var Debug, LogLevel, startUpTime = getConfig()
+```
 ## Changing the value of a variable 
-
+```go
+variable := 5
+variable = 10
+v1, v2, v3 := 1, "2", 3.0
+v1, v2, v3 = 3, "4", 5.0
+```
 ## Operators
+- **Arithmetic operators**  
+- **Comparison operators**  
+- **Logical operators**  
+- **Address operators**  
+- **Receive operators**  
+### Shorthand operations
+--, ++, +=, -=
+### Comparing values
+All the trevial ones.
+### Zero values
+bool - false
+Numbers (ints and floats) - 0
+String - "
+Other base types - nil
 
 ## Value versus pointer
+When we pas primitive data types, arrays and structs to a function, Go makes copies of their values and passes them instead. This approach may potentially uses much memory.
+We can also pass ***pointers*** instead, but this approach potentially uses CPU a lot.
+**Pointer** is not the value itself, but an address of that value.
+Go has two types of memory, ***heap-based*** and ***stack-based***.
+*Stack* is used for copying values, *heap* for pointers. 
+Working out whether a value needs to be put on the heap is called **escape analysis**
+### Getting a pointer
+
+### Getting a value from a pointer
+### Function design with pointers
 
 ## Enums 
 
