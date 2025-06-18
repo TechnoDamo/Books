@@ -37,6 +37,7 @@
 30. [Sweep line algorithms](#30-sweep-line-algorithms)
 
 # Basic Technniques
+
 ## 1. Inroduction
 ### Input and output
 ```cpp
@@ -114,15 +115,232 @@ typedef pair<int, int> pi;
 ```
 #### Macros
 A macro means that certain string in the code will be changed before compilation.
+```cpp
+#define F first
+#define S seconds
+#define PB push_back
+#define MP make_pair
+// After this, the code 
+v.push_back(make_pair(y1, x1));
+v.push_back(make_pair(y2, x2));
+int d = v[i].first+v[i].second;
+// can be shortened as follows:
+v.PB(MP(y1, x1));
+v.PB(MP(y2, x2));
+int d = v[i].F + v[i].S;
+```
+A macro can also have parameters which makes it possible to shorten loops and other structures.
+```cpp
+#define REP(i, a, b) for (int i = a; i <= b; i++)
+// Afther this, the code
+for (int i = 1; i <= n; i++) {
+    search(i);
+}
+can be shortened as follows:
+REP(i, 1, b) {
+    search(i);
+}
+```
 ### Mathematics
 #### Sum formulas
+$$
+\sum_{x=1}^n x^k = 1^k + 2^k + 3^k + \dots + n^k,
+$$
+
+where \( k \) is a positive integer, has a closed-form formula that is a **polynomial of degree \( k + 1 \)**.
+
+For example:
+
+- When \( k = 1 \):
+
+$$
+\sum_{x=1}^n x = 1 + 2 + 3 + \dots + n = \frac{n(n + 1)}{2}
+$$
+
+- When \( k = 2 \):
+
+$$
+\sum_{x=1}^n x^2 = 1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{n(n + 1)(2n + 1)}{6}
+$$
+* *There is a general formula for arbitrary k, but it is too complex to be mentioned here*.
+
+An **arithmetic progression** is a sequence of numbers where the difference between any two consecutive numbers is constant.
+- **\( i-th \) term:**
+
+$$
+a_i = a_1 + (i - 1)d
+$$
+
+- **Sum of first \( n \) terms:**
+
+$$
+S_n = \frac{n}{2} \big(2a_1 + (n - 1)d \big) = \frac{n}{2} (a_1 + a_n)
+$$
+
+A **geometric progression** is a sequence of numbers where the ratio between any two consecutive numbers is constant. 
+
+**i-th** Term
+$$
+a_i = a_1 \cdot r^{i - 1}
+$$
+
+Sum of First **n** Terms
+
+If r < 1:
+
+$$
+S_n = a_1 \cdot \frac{1 - r^n}{1 - r}
+$$
+
+Or (equivalently, if \( r > 1 \)):
+
+$$
+S_n = a_1 \cdot \frac{r^n - 1}{r - 1}
+$$
+
+Alternative form using first and last term:
+
+$$
+S_n = \frac{br - a}{r - 1}
+$$
+
+A **harmonic sum** is the sum of the reciprocals of the first n natural numbers. 
+$$
+H_n = \sum_{k=1}^n \frac{1}{k} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}
+$$
+
 #### Set theory
 #### Logic
 #### Functions
 #### Logarithms
+$$
+\log_k (ab) = \log_k (a) + \log_k (b),
+$$
+
+$$
+\log_k (x^n) = n \cdot \log_k (x).
+$$
+
+$$
+\log_k \left(\frac{a}{b}\right) = \log_k (a) - \log_k (b).
+$$
+
+$$
+\log_u (x) = \frac{\log_k (x)}{\log_k (u)}.
+$$
+
 
 ## 2. Time complexity
+The **time complexity** of an algorithm estimates how much time the algorithms will use for some input. The idea is to represent the efficiency as a function whose parameter is the size of the input, and the output is the amount of steps we need to take to accomplish the computational task. 
+### Calculation rules
+The time complexity is denoted as $O(func(n))$, where ***n*** denotes the input size.
+#### Loops
+#### Order of magnitude
+Time complexity doesn't give the exact number of loop iterations - it only describes how the number of iterations *grows with input size*.
+For example, all these are O(n):
+```cpp
+for (int i = 1; i <= 3*n; i++) {
+// code
+}
+for (int i = 1; i <= n+5; i++) {
+// code
+}
+for (int i = 1; i <= n; i += 2) {
+// code
+}
+```
+#### Phases
+If the algorithm consists of consecutive phases, the total time complexity is the largest time complexity of a single phase.
+#### Several variables
+Sometimes the time complexity depends on several factors. In this case, the time
+complexity formula contains several variables.
+For example, the time complexity of the following code is O(nm):
+```cpp
+for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= m; j++) {
+    // code 
+    }
+}
+```
+#### Recursion
+The time complexity of a recursive function depends on:
+- number of times it called
+- time complexity of a single call
+### Complexity classes
+### Complexity classes
+- $O(1)$ – **constant-time**, the algorithm does not depend on the input size.
+- $O(\log n)$ - **logarithmic**, iften halves the input size at each step.
+- $O(\sqrt{n})$ - **square root algorithm**
+- $O(n)$ - **linear**, goes throught input a constant amount of times.
+- $O(n \log n)$ - often indicates that the algorithm sorts the input.
+- $O(n^2)$ - **quadratic**, often contains two nested loops.
+- $O(n^3)$ - **cubic**, often contains three nested loops.
+- $O(2^n)$ - often indicates that the algorithm iterates through all subsets of the input elements.
+- $O(n!)$ - often indicates that the algorithm iterates through all permutations of the input element. 
+
+An algorythm is **polynomial** if its time complexity is at most $O(n^k)$, where $k$ is a *constant*.
+
+**NP-hard** problems - problems, for which no polynomial algorithm is known.
+
+### Estimating efficiency
+It is important to remember that a time complexity is only an estimate of efficiency, because it hides *constant factors*.
+An Algorithm that runs $O(n)$ time may perofrm *n/2* or *5n* operations. 
+
+### Maximum subarray sum
+Let's discuss a classic problem that has $O(n^3)$, $O(n^2)$, $O(n)$ solutions.
+
+Problem: Given an array of **n** numbers, our task is to caculate the maximum ***subarray sum***, i.e., the largest possible sum of a sequence of consecutive values in the array. 
+#### Algorithm 1 (Brute Force - Triple Loop)
+```cpp
+int best = 0;
+for (int a = 0; a < n; a++) {
+    for (int b = a; b < n; b++) {
+        int sum = 0;
+        for (int k = a; k <= b; k++) {
+            sum += array[k];
+        }
+        best = max(best,sum);
+    }
+}
+cout << best << "\n";
+```
+#### Algorithm 2 (Prefix Sum Optimixation - Double Loop)
+```cpp
+int best = 0;
+for (int a = 0; a < n; a++) {
+    int sum = 0;
+    for (int b = a; b < n; b++) {
+        sum += array[b];
+        best = max(best,sum);
+    }
+}
+cout << best << "\n";
+```
+#### Algorithm 3 (Kabane's algorithm - Single Loop)
+```cpp
+int best = 0, sum = 0;
+for (int k = 0; k < n; k++) {
+    sum = max(array[k],sum+array[k]);
+    best = max(best,sum);
+}
+cout << best << "\n";
+```
+
 ## 3. Sorting
+**Sorting** is a fundamental algorithm design problem. 
+Many efficient algorithms use sorting as a subroutine. 
+THe efficient general sorting algorithms work in $O(nlogn)$ time, as many algorithms that use sorting as a subroutine.
+### Sorting theory
+#### $O(n^2)$ algorithms
+#### Inversions
+#### $O(nlogn)$ algorithms
+#### Sorting lower bound
+#### Counting sort
+
+
+### Sorting in C++
+### Binary search
+
 ## 4. Data structures
 ## 5. Complete search
 ## 6. Greedy algorithms
