@@ -9,7 +9,7 @@ import (
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
-	r := rand.Intn(5) + 1
+	r := rand.Intn(5) +1
 	stars := strings.Repeat("*", r)
 	fmt.Println(stars)
 }

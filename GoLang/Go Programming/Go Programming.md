@@ -105,8 +105,11 @@ v1, v2, v3 = 3, "4", 5.0
 All the trevial ones.
 ### Zero values
 bool - false
+
 Numbers (ints and floats) - 0
-String - "
+
+String - ""
+
 Other base types - nil
 
 ## Value versus pointer
@@ -117,14 +120,76 @@ Go has two types of memory, ***heap-based*** and ***stack-based***.
 *Stack* is used for copying values, *heap* for pointers. 
 Working out whether a value needs to be put on the heap is called **escape analysis**
 ### Getting a pointer
-
+```go
+var p *int // p is a pointer to an int, currently nil
+var p *int = new(int) // points to an int value initialized to 0
+p := new(int)
+x := 42
+p := &x // p  is a *int pointing to x
+```
 ### Getting a value from a pointer
+```go
+fmt.Println(*value)
+```
+Dereferencing a zero or nil pointer is a common bug in Go, so we have to place checks where we are not sure about the value.
+
 ### Function design with pointers
+We should keep in mind, that when we pass pointer to some variables as an argument to a function, changes to var insdie the function affect those to a var outside the function. 
+
+## Constants
+Just replace **var** with **const** in declaration.
 
 ## Enums 
-
+Go doesn't have a built-in type for enums, but it provides a special tool such as **iota**, which works with constant declarations.
+```go
+const (
+  Sunday = iota     // 0
+  Monday            // 1
+  Tuesday           // 2
+  Wednesday         // 3
+  Thursday          // 4
+  Friday            // 5
+  Saturday          // 6
+)
+const (
+  zero = iota // 0
+  _ // skip 1
+  two // 3
+)
+```
 
 # 2. Command and Control
+## if statements
+### if else
+```go
+if input%2 == 0 {
+  fmt.Println(input, "is even")
+} else {
+  fmt.Println(input, "is odd")
+}
+```
+### else if statements
+```go
+if input < 0 {
+  fmt.Println("input is zero")
+} else if input%2 == 0 {
+  fmt.Println(input, "is even")
+} else {
+  fmt.Println(input, "is odd")
+}
+```
+### initial if statements 
+```go
+if err := validate(input); err != nil {
+  fmt.Println(err)
+}
+```
+
+## Expression switch statements
+
+## Loops
+## break and continue
+## goto statements
 
 # 3. Core Types
 
@@ -146,7 +211,7 @@ Working out whether a value needs to be put on the heap is called **escape analy
 
 # 12 About Time
 
-# 13. Programming form the COmmand Line
+# 13. Programming form the Command Line
 
 # 14. File and Systems
 
