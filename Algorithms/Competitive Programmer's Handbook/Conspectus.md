@@ -332,14 +332,95 @@ Many efficient algorithms use sorting as a subroutine.
 THe efficient general sorting algorithms work in $O(nlogn)$ time, as many algorithms that use sorting as a subroutine.
 ### Sorting theory
 #### $O(n^2)$ algorithms
+Such algorithms are usually simple and consist of two nested loops.
+**Bubble sort** is a famous one. 
+The algorithm consisnts of *n* rounds.
+On each round, algorithm iterates through the elements, and swaps all consecutive elements, which are in the wron order.
+After *k* rounds the *k* largest elements will be in their correct positions. 
+```cpp
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n-1; j++) {
+        if (array[j] > array[j+1]) {
+            swap(array[j], array[j+1]);
+        }
+    }
+}
+```
 #### Inversions
+**Inversion** - a pair of consecutive elements, positioned in the wrong order.
+Swapping a pair of consecutive elements that are in the wrong order removes exactly one inversion. 
 #### $O(nlogn)$ algorithms
+We can implement such algorithms if we are not limited to swapping consecutive elements.
+One such algorithm is **merge sort**, which is *based on recursion*.
+How it works:
+1. If $a = b$, the subarray is already sorted, do nothing.
+2. Calculate the position of the middle element: $k = (a+b)/2$.
+3. Recursively sort the subarray $array[a...k]$.
+4. Rcursively sort the subarray $array[k+1...b]$.
+5. *Merge* the sorted subarrays $array[a...k]$ and $array[k+1...b]$ into a sorted subarray $array[a...b]$.
+Algorithm is efficient because it halves the size of the subarray at each step.
+The recursion consists of $O(logn)$ levels and processing each level takes $O(n)$ time, merging subarrays is linear time.
 #### Sorting lower bound
+In short, no comparison-based algorithm can do better that $n \log n$.
 #### Counting sort
+**Counting sort** is an efficient non-comparison-based sorting algorithms.
 
+Its complexity is $O(n)$.
 
+The main idea is that the algorithm iterates through all array elements, and whenever it finds an element **X**, it increments the value of the *bookkeeping* array with index of **X** (barray[X]++). In the end we can restore the sorted sequence.  
+The only *limitation* is that the distance between the smallest and the biggest element should not be too large. 
 ### Sorting in C++
+It is almost always better to use a standard library function for sorting.
+
+Sorting a vector:
+```cpp
+vector<int> v = {4, 2, 5, 3, 5, 8, 3}
+sort(v.begin(), v.end());
+sort(v.rbegin(), v.rend()) //reverse order
+```
+We can also sort an ordinary array:
+```cpp
+int n = 7
+int a[] = {4, 2, 5, 3, 8, 3};
+sort(a, a+n);
+```
+And also a string:
+```cpp
+string s = "monkey";
+sort(s.begin(), s.end());
+```
+#### Comparison operators
+The function *sort* requires that a **comparison operator** is defined for the data type of the elements to be sorted. 
+We can also define custom comparison operators.
+#### User-defined structs
+User-defined structs do not have a comparison operator automatically, so we have to define it.
+```cpp
+struct P {
+    int x, y;
+    bool operator<(const P &p) const {
+        if (x != p.x) return x < p.x;
+        else return y < p.y;
+    }
+};
+```
+#### Comparison functions
+We can also define an external **comparison function** o the sort function as a callback function. 
+```cpp
+bool comp(string a, string b) {
+if (a.size() != b.size()) return a.size() < b.size();
+return a < b;
+}
+// now we can use
+sort(v.begin(), v.end(), comp);
+```
+
 ### Binary search
+#### Method 1
+#### Method 2
+#### C++ functions
+#### Finding the smallest solutions 
+#### Finding the maximum value 
+
 
 ## 4. Data structures
 ## 5. Complete search
