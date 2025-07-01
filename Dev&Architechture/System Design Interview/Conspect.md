@@ -20,59 +20,171 @@
 ---
 
 # 1. Scale from Zero to Million Users
-Content for scaling systems from zero to a million users.
-
----
+## Single Server Setup
+## Database
+## Choosing a Database
+## Vertical Scaling vs Horizontal Scaling
+## Load Balancer
+## Database Replication
+## Cache Tier
+## Considerations for Using Cache
+## Content Delivery Network (CDN)
+## Considerations for Using a CDN
+## Stateless Web Tier
+## Stateful Architecture
+## Stateless Architecture
+## Data Centers
+## Message Queue
+## Logging, Metrics, Automation
+## Database Scaling
 
 # 2. Back-of-the-Envelope Estimation
-Content for quick estimations in system design.
-
----
+## Power of two
+## Latency number 
+## Availability numbers
 
 # 3. A Framework for System Design Interviews
-Content for structuring system design interviews.
-
----
+## Efficient 4-step process 
 
 # 4. Design a Rate Limiter
-Content for designing a rate limiter.
-
----
+## Algorithms for rate limiting
+### Token bucket algorithm
+### Leaking bucket algorithm
+### Fixed window counter algorithm
+### Sliding window log algorithm
+### Sliding window counter algorithm
+## High-level architechture
+## Rate limiting rules
+## Exceeding the rate limit
+## Rate limiter headers
+## Detailed design
+## Rate limiter in a distributed environment
+### Race condition
+### Sync issue
+### Perfomance optimization
+## Monitoring
 
 # 5. Design Consistent Hashing
-Content for designing consistent hashing.
-
----
+## The rehashing problem
+## Consistent hashing
+## Hash space and hash ring
+## Hash servers
+## Hash keys
+## Server lookup
+## Add a server
+## Remove a server
+## Two issues in the basic approach
+## Virtual nodes
+## Find affected keys
 
 # 6. Design a Key-Value Store
-Content for designing a key-value store.
+## Single server key-value store
+## Distributed key-values store
+## CAP theorem
+### Ideal situation
+### Real-world distributed systems
+## System components
+## Data partition
+## Data replication
+## Consistency
+### Consistency models
+## Inconsistency resolution: versioning
+## Handling failures
+### Failure detection
+### Handling temporary failures 
+### Handling permanent failures
+### Handling data center outage
+### Write path
+### Read path
 
----
+
 
 # 7. Design a Unique ID Generator in Distributed Systems
-Content for designing a unique ID generator in distributed systems.
-
----
+## Multi-master replication
+## UUID
+## Ticket Server
+## Twitter snowflake approach
+## Deep dive
+### Timestamp
+### Sequence number
 
 # 8. Design a URL Shortener
-Content for designing a URL shortener.
+## API Endpoints
+## URL redirecting
+## URL shortening
+## Data model
+## Hash function
+### Hash value length
+### Hash + collision resolution
+### Base 62 conversion
+## URL shortening deep dive
+## URL redirecting deep dive
 
----
+
 
 # 9. Design a Web Crawler
-Content for designing a web crawler.
-
----
+### Seed URLs
+### URL Frontier
+### HTML Downloader
+### DNS Resolver
+### Content Parser
+### Content seen?
+### Content Storage
+### URL Extractor
+### URL Filter
+### URL Seen?
+### URL Storage
+### Web crawler worlflow
+## DFS vs BFS
+## URL frontier
+### Politeness
+### Priority
+### Freshness
+### Storage for URL Frontier
+## HTML Downloader
+## Perfomance optimisation
+### 1. Distributed crawl
+### 2. Cache DNS Resolver
+### 3. Locality
+### 4. Short timeout
+## Robustness
+## Extensibility
+## Detect andd avoid problematic content
+### 1. Redundant content
+### 2. Spider traps 
+### 3. Data noise
 
 # 10. Design a Notification System
-Content for designing a notification system.
+## Different types of notifications
+### iOS push notifications
+### Android push notifications
+### SMS message
+### Email
+## Contact info gathering flow
+## Notification sending/receiving flow
+## High-level design
+### Service 1 to N
+### Notification system
+### Third-party services
+### iOS, Android, SMS, Email
+### High-level design (improved)
+...
+## Reliability
+### Data loss prevention
+### Will recipients receive a notification exactly once?
+## Additional components and considerations
+### Notification template
+### Notification setting
+### Rate limiting
+### Retry mechanism 
+### Security in push notifications
+### Monitor queued notifications
+### Events tracking
 
----
+
 
 # 11. Design a News Feed System
-Content for designing a news feed system.
 
----
 
 # 12. Design a Chat System
 Content for designing a chat system.
