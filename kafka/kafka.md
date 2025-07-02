@@ -15,6 +15,25 @@
 14. [Stream Processing](#14-stream-processing)
 
 # 1. Meet Kafka
+## Publish/Subscribe Messaging
+*Publish/subscribe (pub/sub) messaging* is a pattern that is charachterized by the sender (publisher) of a piece of data (messge) not specificially directing it to a receiver. 
+### How it starts
+The need for publish/subscribe messaging system often arises when we have to cetralise&simplify the process of communication of many services/entities of one group with many those of an another group.
+### Individual Queue Systems
+It's useful to have one centralised messaging sustem than to have a few for different cases, because it supports scaling of functionality much better, and the maintaining proccess is more straightforward.
+## Enter Kafka
+Kafka is build as a reliable publish/subscribe messaging system, designed to consistently store messaged data, which is safely stored and can be read deterministically.
+### Messages and batches
+
+### Schemas
+### Topics and Partitions
+### Producers and Consumers
+### Brokers and Clusters
+### Multiple Clusters
+## Why Kafka?
+## The Data Ecosystem
+## Kafka's origin
+## Getting started with Kafka 
 # 2. Installing Kafka
 # 3. Kafka Producers: Writing Messages to Kafka
 # 4. Kafka Consumers: Reading Data from Kafka 
