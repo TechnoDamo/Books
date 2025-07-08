@@ -60,7 +60,10 @@ In general, for a real-valued system of linear equations we obtain either no, ax
 
 ## 2.2 Matrices
 Matrices play a central role in linear algebra. They can be used to compactly represent systems of linear equasions, and they also represent linear functions (linear mappings). <br>
-**A** = $\displaystyle\Large\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$
+
+$$\displaystyle\Large A=\begin{bmatrix} a & b & c \\ d & e & f \\ g & h & i \end{bmatrix}$$
+
+
 
 ### 2.2.1 Matrix Addition and Multiplication
 ### 2.2.2 Inverse and Transpose
