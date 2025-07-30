@@ -21,9 +21,36 @@
 
 # 1. Scale from Zero to Million Users
 ## Single Server Setup
+To understand any setup, we need to understand the request flow and traffic source.
 ## Database
+Separating web/mobile traffic
+(web tier) and database (data tier) servers allows them to be scaled independently.
 ## Choosing a Database
+We choose between Relational and Non-relational dbs.
+Non-relational databases might be the right choice if:
+• Your application requires super-low latency.
+• Your data are unstructured, or you do not have any relational data.
+• You only need to serialize and deserialize data (JSON, XML, YAML, etc.).
+• You need to store a massive amount of data.
 ## Vertical Scaling vs Horizontal Scaling
+Redundancy (active-active and active-passive) means having duplicate components (servers, networks, storage) that can take over if the primary system fails. It ensures that there is no single point of failure (SPOF)
+
+Failover (automatic and manual) is the process of automatically switching to a backup system when the primary system fails. It relies on redundancy but focuses on detecting failures and recovering quickly.
+
+Vertical scaling, referred to as “scale up”, means the process of adding more power (CPU,
+RAM, etc.) to your servers. 
+Horizontal scaling, referred to as “scale-out”, allows you to scale
+by adding more servers into your pool of resources.
+
+Main advantage of vertical scaling is simplicity.
+But it has serious limitations.
+• Vertical scaling has a hard limit. It is impossible to add unlimited CPU and memory to a
+single server.
+• Vertical scaling does not have failover and redundancy. If one server goes down, the
+website/app goes down with it completely.
+Horizontal scaling is more desirable for large scale applications due to the limitations of
+vertical scaling.
+
 ## Load Balancer
 ## Database Replication
 ## Cache Tier
